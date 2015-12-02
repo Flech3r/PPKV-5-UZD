@@ -135,53 +135,71 @@ namespace Praktinis3
                 this.sutartiesSudarymoMokestis(paskolosTipas);
                 this.metinesPalukanosSuma();
 
-                // Vaikų skaičius
-                if (this.vaiku_skaicius < 0 || this.vaiku_skaicius > 10)
+                if (Lyginimasint(this.Vaiku_sk, 0, 10))
                 {
                     groupBox1.Hide();
-                    MessageBox.Show("Vaikų skaičius gali būti nuo 0 iki 10!");
+                    MessageBox.Show("Vaikų skaičius nuo 0 iki 10!");
                     return 1;
                 }
-                else if (this.vaiko_islaikimas <= 0 && this.vaiku_skaicius > 1)
+                /*  if (this.Vaiku_sk < 0 || this.Vaiku_sk > 10)
+                  {
+
+                  }*/
+                else if (this.Vaiko_islaikymas <= 0 && this.Vaiku_sk > 1)
                 {
                     groupBox1.Hide();
-                    MessageBox.Show("Vaiko išlaikimo išlaidos turi viršyti 0");
+                    MessageBox.Show("Vaiko išlaikymas > 0");
                     return 1;
                 }
-                else if (this.vaiko_islaikimas >= 1 && this.vaiku_skaicius == 0)
+                else if (this.Vaiko_islaikymas >= 1 && this.Vaiku_sk == 0)
                 {
                     groupBox1.Hide();
-                    MessageBox.Show("Jūs negalite skirti vaikų išlaikimui, nes jų neturite!");
+                    MessageBox.Show("Jūs neturite vaiku!");
                     return 1;
                 }
-                else if (this.seimos_pajamos < 0 || this.seimos_pajamos > 30000)
+                else if (LyginimasDouble(this.seimos_pajamos, 0, 30000)) {
+                    groupBox1.Hide();
+                    MessageBox.Show("Šeimos pajamos nuo 0 iki 30000 €");
+                    return 1;
+                }
+                /* else if (this.seimos_pajamos < 0 || this.seimos_pajamos > 30000)
+                 {
+
+                 }*/
+                else if (LyginimasDouble(this.seimos_skolos, 0, 15000))
                 {
                     groupBox1.Hide();
-                    MessageBox.Show("Šeimos pajamos turi sudaryti nuo 0 iki 30000 €");
+                    MessageBox.Show("Šeimos skola nuo 0 iki 15000 €");
                     return 1;
                 }
-                else if (this.seimos_skolos < 0 || this.seimos_skolos > 15000)
+               /* else if (this.seimos_skolos < 0 || this.seimos_skolos > 15000)
                 {
                     groupBox1.Hide();
-                    MessageBox.Show("Šeimos skola turi sudaryti nuo 0 iki 15000 €");
+                    MessageBox.Show("Šeimos skola nuo 0 iki 15000 €");
                     return 1;
-                }
+                }*/
                 else if (this.paskolos_suma < 1)
                 {
                     groupBox1.Hide();
-                    MessageBox.Show("Paskolos suma turi būti daugiau nei 0!");
+                    MessageBox.Show("Paskolos suma > 0!");
                     return 1;
                 }
-                else if (this.paskolos_palukanos < 0 || this.paskolos_palukanos > 100)
+                else if (LyginimasDouble(this.paskolos_palukanos, 0, 100))
                 {
                     groupBox1.Hide();
-                    MessageBox.Show("Paskolos palūkanos turi sudaryti nuo 0 iki 100%!");
+                    MessageBox.Show("Paskolos palūkanos nuo 0 iki 100%!");
                     return 1;
                 }
+             /*   else if (this.paskolos_palukanos < 0 || this.paskolos_palukanos > 100)
+                {
+                    groupBox1.Hide();
+                    MessageBox.Show("Paskolos palūkanos nuo 0 iki 100%!");
+                    return 1;
+                }*/
                 else if (this.pastato_amzius > 40)
                 {
                     groupBox1.Hide();
-                    MessageBox.Show("Pastato amžius ne daugiau nei 40!");
+                    MessageBox.Show("Pastato amžius <= 40!");
                     return 1;
                 }
                 else if ((this.tikros_pajamos * 0.4) < this.menesineImoka())
