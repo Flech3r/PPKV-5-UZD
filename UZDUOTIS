@@ -96,6 +96,15 @@ namespace Praktinis3
         {
             this.viso_grazinti = this.sutarties_pasirasimo_mokestis + this.paskolos_suma + ((this.paskolos_suma / 100 * this.paskolos_palukanos)/* * this.grazinimo_laikotarpis*/);
         }
+        private Boolean Lyginimasint(int vienas,int skc1, int skc2)
+        {
+            return vienas < skc1 || vienas > skc2;
+        }
+        private Boolean LyginimasDouble(double vienas, int skc1, int skc2)
+        {
+            return vienas < skc1 || vienas > skc2;
+        }
+        
         private int pradiniuDuomenuTikrinimas(int paskolosTipas)
         {
 
